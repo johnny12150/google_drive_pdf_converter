@@ -35,6 +35,7 @@ jobs:
           pyinstaller --hidden-import PyQt6 --windowed --name PDFMerger pyqt_app.py
           cd dist/PDFMerger.app/Contents/MacOS/
           chmod +x PDFMerger
+          ls -l dist/PDFMerger.app/Contents/MacOS/
 
       - name: Upload the built .app
         uses: actions/upload-artifact@v4

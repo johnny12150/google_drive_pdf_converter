@@ -21,7 +21,9 @@ def main(url, output_folder):
         download_a_folder(url, output_folder)
 
     for file in glob(f'{output_folder}/*.pdf'):
-        merge_pages(file, f'{file.split(".pdf")[0]}_4_in_1.pdf', 4)
+        if not '4_in_1' in file:
+            merge_pages(file, f'{file.split(".pdf")[0]}_4_in_1.pdf', 4)
+            print(f'{file} has been merged')
 
 
 if __name__ == '__main__':

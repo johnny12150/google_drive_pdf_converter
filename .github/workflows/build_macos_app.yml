@@ -37,5 +37,5 @@ jobs:
       - name: Upload the built .app
         uses: actions/upload-artifact@v4
         with:
-          name: PDFMerger
-          path: dist/PDFMerger.app
+          name: dist of PDFMerger
+          path: dist

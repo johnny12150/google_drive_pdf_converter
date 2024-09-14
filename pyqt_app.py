@@ -66,7 +66,6 @@ class MainWindow(QWidget):
 
         # Clear input box
         self.text_input.clear()
-        self.selected_dir_label.setText("Select Directory")
 
 
 if __name__ == '__main__':

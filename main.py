@@ -6,7 +6,7 @@ import gdown
 
 
 def download_single_file(url, destination):
-    gdown.download(url, destination)
+    gdown.download(url, destination, fuzzy=True)
 
 
 def download_a_folder(url, destination):
@@ -27,6 +27,10 @@ def download_a_folder(url, destination):
         print('Please enter a valid url')
 
 if __name__ == '__main__':
+    # Handle a file link (preview page)
+    download_single_file('https://drive.google.com/file/d/13ZBJ6P_UvicQFZmuHQ4CumT_8mwvX9YE/view',
+                         'download/test.pdf')
+
     # Handle a folder
     download_a_folder('https://drive.google.com/drive/folders/1iM2Pt85FQeNyXtm1vRGbEhHlRvufbBLe?usp=sharing',
                          'download')

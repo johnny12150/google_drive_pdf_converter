@@ -13,22 +13,22 @@ class MainWindow(QWidget):
         self.layout = QVBoxLayout()
 
         # Create a text input field
-        self.text_input = QLineEdit(self)
+        self.text_input = QLineEdit()
         self.text_input.setPlaceholderText("Enter some text here")
 
         # Create a button to select a directory
-        self.select_dir_button = QPushButton("Select Directory", self)
+        self.select_dir_button = QPushButton("Select Directory")
         self.select_dir_button.clicked.connect(self.select_directory)
 
         # Create a label to show the selected directory
-        self.selected_dir_label = QLabel("No directory selected", self)
+        self.selected_dir_label = QLabel("No directory selected")
 
         # Create a label to show the convertion status
-        self.convertion_status = QLabel("PDF has been converted", self)
+        self.convertion_status = QLabel("PDF has been converted")
         self.convertion_status.setVisible(False)
 
         # Create a button to submit the data
-        self.submit_button = QPushButton("Convert", self)
+        self.submit_button = QPushButton("Convert")
         self.submit_button.clicked.connect(self.submit_data)
 
         # Add widgets to layout

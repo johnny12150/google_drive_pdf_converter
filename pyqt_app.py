@@ -36,6 +36,7 @@ class MainWindow(QWidget):
         self.layout.addWidget(self.select_dir_button)
         self.layout.addWidget(self.selected_dir_label)
         self.layout.addWidget(self.submit_button)
+        self.layout.addWidget(self.convertion_status)
 
         self.setLayout(self.layout)
 

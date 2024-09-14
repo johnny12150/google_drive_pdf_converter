@@ -35,7 +35,7 @@ jobs:
           pyinstaller --name PDFMerger pyqt_app.py
 
       - name: Upload the built .app
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: PDFMerger
           path: dist/PDFMerger.app

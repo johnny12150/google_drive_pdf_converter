@@ -23,6 +23,10 @@ class MainWindow(QWidget):
         # Create a label to show the selected directory
         self.selected_dir_label = QLabel("No directory selected", self)
 
+        # Create a label to show the convertion status
+        self.convertion_status = QLabel("PDF has been converted", self)
+        self.convertion_status.setVisible(False)
+
         # Create a button to submit the data
         self.submit_button = QPushButton("Convert", self)
         self.submit_button.clicked.connect(self.submit_data)
@@ -55,6 +59,12 @@ class MainWindow(QWidget):
 
     def handle_data(self, directory, text):
         main(text, directory)
+
+        # Display the convertion status
+        self.convertion_status.setVisible(True)
+
+        # Clear input box
+        self.text_input.clear()
 
 
 if __name__ == '__main__':

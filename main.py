@@ -1,5 +1,5 @@
+import os
 import argparse
-import shutil
 from glob import glob
 
 from utils.downloader import download_single_file, download_a_folder
@@ -24,7 +24,8 @@ def main(url, output_folder):
     for file in glob(f'{output_folder}/*.pdf'):
         if not '4_in_1' in file:
             merge_pages(file, f'{file.split(".pdf")[0]}_4_in_1.pdf', 4)
-            shutil.rmtree(file)
+            if os.path.exists(file):
+                os.remove(file)
             print(f'{file} has been merged')
 
 if __name__ == '__main__':

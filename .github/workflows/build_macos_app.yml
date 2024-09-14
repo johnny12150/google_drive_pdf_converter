@@ -49,6 +49,11 @@ jobs:
           chmod +x builddmg.sh
           ./builddmg.sh
 
+      - name: Clean Up
+        run: |
+          rm -rf dmg
+          rm -rf PDFMerger
+
       - name: Upload the built .app
         uses: actions/upload-artifact@v4
         with:

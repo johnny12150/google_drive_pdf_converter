@@ -36,6 +36,10 @@ jobs:
           cd dist/PDFMerger.app/Contents/MacOS/
           chmod +x PDFMerger
 
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
       - name: Install macOS packages
         run: |
           brew install create-dmg

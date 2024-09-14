@@ -37,6 +37,7 @@ def download_a_folder(url, destination):
     else:
         print('Please enter a valid url')
 
+
 if __name__ == '__main__':
     # Handle a file link (preview page)
     download_single_file('https://drive.google.com/file/d/13ZBJ6P_UvicQFZmuHQ4CumT_8mwvX9YE/view',

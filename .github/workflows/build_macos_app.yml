@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14-arm64
 
     steps:
       - name: Check out code
@@ -33,6 +33,7 @@ jobs:
       - name: Build the .app bundle
         run: |
           pyinstaller --name PDFMerger pyqt_app.py
+          ls -l
 
       - name: Upload the built .app
         uses: actions/upload-artifact@v4

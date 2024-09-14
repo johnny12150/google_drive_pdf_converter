@@ -32,10 +32,10 @@ jobs:
 
       - name: Build the .app bundle
         run: |
-          pyinstaller --name PDFMerger pyqt_app.py
+          pyinstaller --windowed --name PDFMerger pyqt_app.py
 
       - name: Upload the built .app
         uses: actions/upload-artifact@v4
         with:
           name: PDFMerger
-          path: dist/PDFMerger
+          path: dist/PDFMerger.app

@@ -44,6 +44,11 @@ jobs:
         run: |
           brew install create-dmg
 
+      - name: Convert app to dmg
+        run: |
+          chmod +x builddmg.sh
+          ./builddmg.sh
+
       - name: Upload the built .app
         uses: actions/upload-artifact@v4
         with:

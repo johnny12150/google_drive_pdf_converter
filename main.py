@@ -9,7 +9,7 @@ def parsing():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('url')
-    parser.add_argument('output-folder')
+    parser.add_argument('output_folder')
 
     return parser.parse_args()
 
@@ -21,7 +21,7 @@ def main(url, output_folder):
         download_a_folder(url, output_folder)
 
     for file in glob(f'{output_folder}/*.pdf'):
-        merge_pages(file, f'{output_folder}/{file.split(".pdf")[0]}_4_in_1.pdf', 4)
+        merge_pages(file, f'{file.split(".pdf")[0]}_4_in_1.pdf', 4)
 
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
 import argparse
 from glob import glob
 
-from downloader import download_single_file, download_a_folder
-from converter import merge_pages
+from utils.downloader import download_single_file, download_a_folder
+from utils.converter import merge_pages
 
 
 def parsing():

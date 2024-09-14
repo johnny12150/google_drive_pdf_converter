@@ -1,39 +1,69 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QFileDialog
+
+from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QFileDialog, QLineEdit
+
+from main import main
 
 
-# Define a function to open the directory selection dialog
-def select_directory():
-    # Open a dialog to select a directory
-    directory = QFileDialog.getExistingDirectory(window, 'Select Directory')
-    if directory:
-        label.setText(f'Selected Directory: {directory}')
-    else:
-        label.setText('No directory selected.')
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        # Layout setup
+        self.layout = QVBoxLayout()
+
+        # Create a text input field
+        self.text_input = QLineEdit(self)
+        self.text_input.setPlaceholderText("Enter some text here")
+
+        # Create a button to select a directory
+        self.select_dir_button = QPushButton("Select Directory", self)
+        self.select_dir_button.clicked.connect(self.select_directory)
+
+        # Create a label to show the selected directory
+        self.selected_dir_label = QLabel("No directory selected", self)
+
+        # Create a button to submit the data
+        self.submit_button = QPushButton("Convert", self)
+        self.submit_button.clicked.connect(self.submit_data)
+
+        # Add widgets to layout
+        self.layout.addWidget(self.text_input)
+        self.layout.addWidget(self.select_dir_button)
+        self.layout.addWidget(self.selected_dir_label)
+        self.layout.addWidget(self.submit_button)
+
+        self.setLayout(self.layout)
+
+        # Variable to store selected directory
+        self.selected_directory = ""
+
+    def select_directory(self):
+        # Open a directory selection dialog
+        dir = QFileDialog.getExistingDirectory(self, "Select Directory")
+
+        if dir:
+            self.selected_directory = dir
+            self.selected_dir_label.setText(f"Selected Directory: {dir}")
+
+    def submit_data(self):
+        # Get text from the input box
+        input_text = self.text_input.text()
+
+        # Call the function to handle the data
+        self.handle_data(self.selected_directory, input_text)
+
+    def handle_data(self, directory, text):
+        main(text, directory)
 
 
 if __name__ == '__main__':
     # Create an application object
     app = QApplication(sys.argv)
 
-    # Create a window (widget)
-    window = QWidget()
+    # Create a window
+    window = MainWindow()
     window.setWindowTitle('Download PDF from Google Drive and Merge It')
-
-    # Create a vertical layout
-    layout = QVBoxLayout()
-
-    # Add a label to display the selected path
-    label = QLabel('Please select an output directory...')
-    layout.addWidget(label)
-
-    # Add a button to open the selection dialog
-    button = QPushButton('Select Directory')
-    button.clicked.connect(select_directory)  # Connect the button to the directory selection function
-    layout.addWidget(button)
-
-    # Set the layout for the main window
-    window.setLayout(layout)
 
     # Show the window
     window.show()

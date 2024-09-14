@@ -11,7 +11,6 @@ create-dmg \
   --volname "PDFMerger" \
   --window-pos 200 120 \
   --window-size 600 300 \
-  --icon-size 100 \
   --hide-extension "PDFMerger.app" \
   --app-drop-link 425 120 \
   "dist/PDFMerger.dmg" \

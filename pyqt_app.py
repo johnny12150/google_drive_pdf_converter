@@ -68,16 +68,15 @@ class MainWindow(QWidget):
         self.text_input.clear()
 
 
-if __name__ == '__main__':
-    # Create an application object
-    app = QApplication(sys.argv)
+# Create an application object
+app = QApplication(sys.argv)
 
-    # Create a window
-    window = MainWindow()
-    window.setWindowTitle('Download PDF from Google Drive and Merge It')
+# Create a window
+window = MainWindow()
+window.setWindowTitle('Download PDF from Google Drive and Merge It')
 
-    # Show the window
-    window.show()
+# Show the window
+window.show()
 
-    # Execute the application's event loop
-    sys.exit(app.exec())
+# Execute the application's event loop
+sys.exit(app.exec())

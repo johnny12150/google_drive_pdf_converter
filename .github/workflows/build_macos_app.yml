@@ -32,7 +32,7 @@ jobs:
 
       - name: Build the .app bundle
         run: |
-          pyinstaller --windowed --name PDFMerger pyqt_app.py
+          pyinstaller --hidden-import PyQt6 --windowed --name PDFMerger pyqt_app.py
           cd dist/PDFMerger.app/Contents/MacOS/
           chmod +x PDFMerger
 

@@ -23,7 +23,7 @@ jobs:
       - name: Install PyInstaller
         run: |
           pip install -r requirements.txt
-          pip install pyinstaller
+          PYINSTALLER_COMPILE_BOOTLOADER=1 pip install git+https://github.com/pyinstaller/pyinstaller.git@develop
 
       - name: Build the .app bundle
         run: |

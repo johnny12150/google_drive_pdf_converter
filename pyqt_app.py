@@ -61,7 +61,7 @@ class MainWindow(QWidget):
     def handle_data(self, directory, text):
         main(text, directory)
 
-        # Display the convertion status
+        # Display the conversion status
         self.convertion_status.setVisible(True)
 
         # Clear input box

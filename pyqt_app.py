@@ -2,7 +2,6 @@ import sys
 
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QFileDialog, QLineEdit
 
-from main import main
 
 
 class MainWindow(QWidget):

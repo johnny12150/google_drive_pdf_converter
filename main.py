@@ -28,6 +28,7 @@ def main(url, output_folder):
                 os.remove(file)
             print(f'{file} has been merged')
 
+
 if __name__ == '__main__':
     args = parsing()
     main(args.url, args.output_folder)

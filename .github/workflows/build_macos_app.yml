@@ -31,18 +31,18 @@ jobs:
           cd dist/PDFMerger.app/Contents/MacOS/
           chmod +x PDFMerger
 
-    - name: Set up Homebrew
-       id: set-up-homebrew
-       uses: Homebrew/actions/setup-homebrew@master
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
 
-     - name: Install macOS packages
-       run: |
-         brew install create-dmg
+      - name: Install macOS packages
+        run: |
+          brew install create-dmg
 
-     - name: Convert app to dmg
-       run: |
-         chmod +x builddmg.sh
-         ./builddmg.sh
+      - name: Convert app to dmg
+        run: |
+          chmod +x builddmg.sh
+          ./builddmg.sh
 
       - name: Clean Up
         run: |

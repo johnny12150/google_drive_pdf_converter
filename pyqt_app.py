@@ -1,9 +1,17 @@
 import sys
 
+from PyQt6.QtCore import QSharedMemory
 from PyQt6.QtWidgets import (QApplication, QLabel, QWidget, QVBoxLayout, QPushButton,
                              QFileDialog, QLineEdit, QMainWindow)
 
 from main import main
+
+
+class SingleInstance:
+    def __init__(self, key):
+        self.shared_memory = QSharedMemory(key)
+        if not self.shared_memory.create(1):  # Try to create the shared memory
+            sys.exit('Another instance is already running.')
 
 
 class MainWindow(QMainWindow):
@@ -72,6 +80,9 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     # Create an application object
     app = QApplication(sys.argv)
+
+    # Create a SingleInstance object with a unique key
+    single_instance = SingleInstance("my_unique_app_key_pyqt6")
 
     # Create a window
     window = MainWindow()

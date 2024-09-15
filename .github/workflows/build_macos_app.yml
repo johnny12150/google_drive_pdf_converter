@@ -1,0 +1,42 @@
+name: Build macOS .app
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - feature/qt
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install PyInstaller
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build the .app bundle
+        run: |
+          pyinstaller --windowed --name PDFMerger pyqt_app.py
+          cd dist/PDFMerger.app/Contents/MacOS/
+          chmod +x PDFMerger
+
+      - name: Clean Up
+        run: |
+          rm -rf dist/PDFMerger
+
+      - name: Upload the built .app
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist of PDFMerger
+          path: dist

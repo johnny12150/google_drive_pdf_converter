@@ -1,2 +1,4 @@
 gdown
 beautifulsoup4
+pypdf
+PyQt6==6.4.0

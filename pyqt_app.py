@@ -23,7 +23,7 @@ class MainWindow(QWidget):
         # Create a label to show the selected directory
         self.selected_dir_label = QLabel("No directory selected")
 
-        # Create a label to show the convertion status
+        # Create a label to show the conversion status
         self.convertion_status = QLabel("PDF has been converted")
         self.convertion_status.setVisible(False)
 

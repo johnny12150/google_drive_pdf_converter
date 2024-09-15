@@ -1,15 +1,19 @@
 import sys
 
-from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QFileDialog, QLineEdit
+from PyQt6.QtWidgets import (QApplication, QLabel, QWidget, QVBoxLayout, QPushButton,
+                             QFileDialog, QLineEdit, QMainWindow)
+
+from main import main
 
 
-
-class MainWindow(QWidget):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Layout setup
-        self.layout = QVBoxLayout()
+        # Create a central widget and set the layout for the main window
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        self.layout = QVBoxLayout(central_widget)
 
         # Create a text input field
         self.text_input = QLineEdit()
@@ -36,8 +40,6 @@ class MainWindow(QWidget):
         self.layout.addWidget(self.selected_dir_label)
         self.layout.addWidget(self.submit_button)
         self.layout.addWidget(self.convertion_status)
-
-        self.setLayout(self.layout)
 
         # Variable to store selected directory
         self.selected_directory = ""
@@ -74,8 +76,6 @@ if __name__ == '__main__':
     # Create a window
     window = MainWindow()
     window.setWindowTitle('Download PDF from Google Drive and Merge It')
-
-    # Show the window
     window.show()
 
     # Execute the application's event loop

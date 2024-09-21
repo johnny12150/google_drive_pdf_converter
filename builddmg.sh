@@ -9,7 +9,7 @@ cp -r "dist/PDFMerger.app" dist/dmg
 test -f "dist/PDFMerger.dmg" && rm "dist/PDFMerger.dmg"
 create-dmg \
   --volname "PDFMerger" \
-  --volicon "assets/icon.icns"
+  --volicon "assets/icon.icns" \
   --window-pos 200 120 \
   --window-size 600 300 \
   --hide-extension "PDFMerger.app" \

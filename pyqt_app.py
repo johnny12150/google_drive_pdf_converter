@@ -2,7 +2,7 @@ import sys
 
 from PyQt6.QtCore import QSharedMemory
 from PyQt6.QtWidgets import (QApplication, QLabel, QWidget, QVBoxLayout, QPushButton,
-                             QFileDialog, QLineEdit, QMainWindow)
+                             QFileDialog, QLineEdit, QMainWindow, QComboBox)
 
 from main import main
 
@@ -34,18 +34,24 @@ class MainWindow(QMainWindow):
         # Create a label to show the selected directory
         self.selected_dir_label = QLabel("No directory selected")
 
-        # Create a label to show the conversion status
-        self.convertion_status = QLabel("PDF has been converted")
-        self.convertion_status.setVisible(False)
+        # Create the combo box (dropdown)
+        self.combo = QComboBox()
+        self.combo.addItems(["1", "4"])  # Add options to the dropdown
+        self.combo.setCurrentIndex(1)  # Set the default option
 
         # Create a button to submit the data
         self.submit_button = QPushButton("Convert")
         self.submit_button.clicked.connect(self.submit_data)
 
+        # Create a label to show the conversion status
+        self.convertion_status = QLabel("PDF has been converted")
+        self.convertion_status.setVisible(False)
+
         # Add widgets to layout
         self.layout.addWidget(self.text_input)
         self.layout.addWidget(self.select_dir_button)
         self.layout.addWidget(self.selected_dir_label)
+        self.layout.addWidget(self.combo)
         self.layout.addWidget(self.submit_button)
         self.layout.addWidget(self.convertion_status)
 
@@ -68,7 +74,7 @@ class MainWindow(QMainWindow):
         self.handle_data(self.selected_directory, input_text)
 
     def handle_data(self, directory, text):
-        main(text, directory)
+        main(text, directory, int(self.combo.currentText()))
 
         # Display the conversion status
         self.convertion_status.setVisible(True)

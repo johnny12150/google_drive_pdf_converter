@@ -16,6 +16,8 @@ def parsing():
 
 
 def main(url, output_folder, pages_per_sheet=4):
+    file_downloaded, file_converted = False, False
+
     if 'file/d' in url:
         download_single_file(url, output_folder)
     if 'drive/folders' in url:
@@ -28,6 +30,11 @@ def main(url, output_folder, pages_per_sheet=4):
                 if os.path.exists(file):
                     os.remove(file)
                 print(f'{file} has been merged')
+        file_downloaded, file_converted = True, True
+    else:
+        file_downloaded = True
+
+    return file_downloaded, file_converted
 
 
 if __name__ == '__main__':

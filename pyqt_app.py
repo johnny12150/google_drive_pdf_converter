@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.submit_button.clicked.connect(self.submit_data)
 
         # Create a label to show the conversion status
-        self.convertion_status = QLabel("PDF has been converted")
+        self.convertion_status = QLabel("")
         self.convertion_status.setVisible(False)
 
         # Add widgets to layout
@@ -74,10 +74,14 @@ class MainWindow(QMainWindow):
         self.handle_data(self.selected_directory, input_text)
 
     def handle_data(self, directory, text):
-        main(text, directory, int(self.combo.currentText()))
+        file_downloaded, file_converted = main(text, directory, int(self.combo.currentText()))
 
         # Display the conversion status
         self.convertion_status.setVisible(True)
+        if file_converted:
+            self.convertion_status.setText("PDF has been converted")
+        elif file_downloaded:
+            self.convertion_status.setText("PDF has been downloaded")
 
         # Clear input box
         self.text_input.clear()
